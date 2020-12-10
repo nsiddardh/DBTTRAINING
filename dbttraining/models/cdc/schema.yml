@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: product_schema
+    description: 'Product CDC'
+    database: TESTDBT
+    schema: DBT_SNAMBURI
+    tables: 
+          - name: product_src

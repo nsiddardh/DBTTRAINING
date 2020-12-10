@@ -33,6 +33,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   dbttraining:
-      # Applies to all files under models/example/
-      example:
-          materialized: view
+    materialized: table
+    # Applies to all files under models/example/
+    example:
+        materialized: view
+      # Applies to all files under models/cdc/
+    cdc:
+        materialized: table

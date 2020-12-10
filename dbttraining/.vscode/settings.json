@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "snowflakeOptions": {
+                "clientSessionKeepAlive": true,
+                "clientSessionKeepAliveHeartbeatFrequency": 3600
+            },
+            "previewLimit": 50,
+            "driver": "Snowflake",
+            "name": "snowflake",
+            "account": "zm54888.ap-southeast-1",
+            "username": "NSIDDARDH",
+            "password": "Siddu@123",
+            "database": "TESTDBT",
+            "warehouse": "COMPUTE_WH"
+        }
+    ]
+}
