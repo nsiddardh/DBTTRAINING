@@ -8,3 +8,16 @@ sources:
           - name: time_day_dim
           - name: TIME_DAYPART_DET
           - name: SRC_SEQ_HME_DETAIL
+
+  - name: tpch_sample
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: DBT_SNAMBURI
+    tables:
+      - name: LINEITEM
+      - name: CUSTOMER
+      - name: ORDERS
+      - name: PARTSUPP
+      - name: SUPPLIER
+      - name: PART
+      - name: NATION
+      - name: REGION
