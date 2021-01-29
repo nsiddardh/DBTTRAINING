@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: show_stopper
+    description: 'showstopper'
+    schema: DBT_SNAMBURI
+    tables: 
+          - name: time_day_dim
+          - name: TIME_DAYPART_DET
+          - name: SRC_SEQ_HME_DETAIL
