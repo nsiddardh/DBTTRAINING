@@ -25,14 +25,10 @@ src_column_list:
         - 'LANE_NUMBER'
         - 'TBC_LANE'
 lkp_column_list:
+    is_hashdiff: true
     columns:
         - 'DW_DAY'
-source_tbl_join_field:
-    columns:
-        - 'BUSINESS_DATE'
-lookup_tbl_join_field:
-    columns:
-        - 'BUSIDAYDT'
+
 {% endset %}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
@@ -53,10 +49,10 @@ lookup_tbl_join_field:
  {{ config(materialized='view') }}
 
  {{ generate_lkp_query( ref('seq_hme_detail')  , ref('odbc_time_day_dim') , 
- 'I', 
+ join_type, 
  join_operator, 
  source_tbl_join_field, 
  lookup_tbl_join_field ,    
  source_columns['columns'], 
- lkp_columns['columns']  ~ ' as DW_BUSI_DAY')    
+ lkp_columns['columns'] ~ ' as DW_BUSI_DAY' )    
  }}

@@ -1,0 +1,4 @@
+version: 2
+
+var:
+    svBusiDt: 'TRIM(LANE_NUMBER)'
