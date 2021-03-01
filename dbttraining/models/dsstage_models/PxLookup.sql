@@ -2,35 +2,50 @@
 
 
 {%- set yaml_metadata -%}
+
 source_model: "lkp_day_part"
-source_columns:
-    STORE_ID: 'STORE_ID'
-    DW_STOREID: 'DW_STOREID'
-    BUSINESS_DATE: 'BUSINESS_DATE'
-    OPEN_TIME: 'OPEN_TIME'
-    CLOSE_TIME: 'CLOSE_TIME'
-    TRANSACTION_DATE: 'TRANSACTION_DATE'
-    TRANS_DATE_TXT: 'TRANS_DATE_TXT'
-    TRANSACTION_TIME: 'TRANSACTION_TIME'
-    GREET_DELAY: 'GREET_DELAY'
-    MENU_BOARD_DURATION: 'MENU_BOARD_DURATION'
-    QUEUE_DURATION: 'QUEUE_DURATION'
-    CASHIER_WINDOW_DURATION: 'CASHIER_WINDOW_DURATION'
-    BOOTH_QUEUE_DURATION: 'BOOTH_QUEUE_DURATION'
-    SERVICE_WINDOW_DURATION: 'SERVICE_WINDOW_DURATION'
-    TOTAL_BOOTH_DURATION: 'TOTAL_BOOTH_DURATION'
-    WAITING_AREA_DURATION: 'WAITING_AREA_DURATION'
-    TRANSACTION_TIME_LKP: 'TRANSACTION_TIME_LKP'
-    TOTAL_SPEED_OF_SERVICE_DURATION: 'TOTAL_SPEED_OF_SERVICE_DURATION'
-    LANE_NUMBER: 'LANE_NUMBER'
-    TBC_LANE: 'TBC_LANE'
+lkp_models: "odbc_time_day_dim, odbc_time_day_part"
+lkp_columns: '{ "lkp_models": 
+							{ 
+								name: "odbc_time_day_dim" 
+								columns: "DW_DAY,BUSIDAYDT"
+                                condition: "lkp_day_part.business_date = odbc_time_day_dim.busidaydt"
+							},
+							{
+								name: "odbc_time_day_part"
+								columns: "DW_DAYPART,DAYPART_BGN_TM,DAYPART_END_TM"
+                                condition: "lkp_day_part.business_date = odbc_time_day_dim.busidaydt"
+							}
+			  }'
 
-lkp_models: "odbc_time_day_dim,odbc_time_day_part"
-lkp_columns:
-    DW_DAY: 'DW_BUSI_DAY'
-    DW_DAYPART: 'DW_DAYPART'
+lkp_conidtions: "a.business_date = b.busidaydt and a.dw_day = c.dw_day"
 
-lkp_conidtions: ""
+{% set my_json_str = '{"source_model": "lkp_day_part"}' %}
+{% set my_dict = fromjson(my_json_str) %}
+
+derived_columns:
+    DW_DAY: "DW_BUSI_DAY"
+    DW_DAYPART: "DW_DAYPART"
+    STORE_ID: "STORE_ID"
+    DW_STOREID: "DW_STOREID"
+    BUSINESS_DATE: "BUSINESS_DATE"
+    OPEN_TIME: "OPEN_TIME"
+    CLOSE_TIME: "CLOSE_TIME"
+    TRANSACTION_DATE: "TRANSACTION_DATE"
+    TRANS_DATE_TXT: "TRANS_DATE_TXT"
+    TRANSACTION_TIME: "TRANSACTION_TIME"
+    GREET_DELAY: "GREET_DELAY"
+    MENU_BOARD_DURATION: "MENU_BOARD_DURATION"
+    QUEUE_DURATION: "QUEUE_DURATION"
+    CASHIER_WINDOW_DURATION: "CASHIER_WINDOW_DURATION"
+    BOOTH_QUEUE_DURATION: "BOOTH_QUEUE_DURATION"
+    SERVICE_WINDOW_DURATION: "SERVICE_WINDOW_DURATION"
+    TOTAL_BOOTH_DURATION: "TOTAL_BOOTH_DURATION"
+    WAITING_AREA_DURATION: "WAITING_AREA_DURATION"
+    TRANSACTION_TIME_LKP: "TRANSACTION_TIME_LKP"
+    TOTAL_SPEED_OF_SERVICE_DURATION: "TOTAL_SPEED_OF_SERVICE_DURATION"
+    LANE_NUMBER: "LANE_NUMBER"
+    TBC_LANE: "TBC_LANE"
 
 {% endset %}
 
@@ -38,17 +53,13 @@ lkp_conidtions: ""
 
 {% set source_model = metadata_dict['source_model'] %}
 
-{% set source_columns = metadata_dict['source_columns'] %}
-
-{{source_columns}}
-
-{% set lkp_columns = metadata_dict['lkp_columns'] %}
-
-{{lkp_columns}}
-
-{%- set derived_column_names = dbtvault.extract_column_names(derived_columns) -%}
-
-{{ dbtvault.derive_columns(source_relation=source_model, columns=derived_columns) | indent(4) }}
+{% set derived_columns = metadata_dict['derived_columns'] %}
+{% set lkp_models = metadata_dict['lkp_models'] %}
+{% set lkp_conidtions = metadata_dict['lkp_conidtions'] %}
 
 
-{{source_columns}} + "," + {{lkp_columns}}
+
+select {{ create_alias(  source_model=source_model,
+                  derived_columns=derived_columns) }} from {{source_model}} , {{lkp_models }}
+
+                  where {{lkp_conidtions}}
