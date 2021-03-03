@@ -35,7 +35,7 @@
 
 {%- set derived_column_names = dbtvault.extract_column_names(derived_columns) -%}
 
-{{ dbtvault.derive_columns(source_relation=source_relation, columns=derived_columns) | indent(4) }}
+{{ dbtvault.derive_columns_only(source_relation=source_relation, columns=derived_columns) | indent(4) }}
 
 {%- endmacro -%}
 
