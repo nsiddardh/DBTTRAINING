@@ -9,6 +9,7 @@
 {%- set yaml_metadata -%}
 
 source_model: "lkp_day_part"
+filter_conditions: " DW_STOREID is not null "
 derived_columns:
     DW_STOREID: 'DW_STOREID'
     DW_BUSI_DAY: 'DW_BUSI_DAY'
@@ -45,13 +46,10 @@ derived_columns:
 
 {% set hashed_columns = metadata_dict['hashed_columns'] %}
 
-WITH staging AS (
-{{ dbtvault.stage(include_source_columns=false,
-                  source_model=source_model,
-                  derived_columns=derived_columns,
-                  hashed_columns=none,
-                  ranked_columns=none) }}
-)
+{% set filter_conditions = metadata_dict['filter_conditions'] %}
 
-SELECT *
-FROM staging
+SELECT {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
+FROM {{ source_model }}
+{% if filter_conditions != "" %}
+    where {{ filter_conditions }}
+    {%- endif -%}
