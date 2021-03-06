@@ -11,7 +11,4 @@ source_columns: "STORE_ID,DW_STOREID,BUSINESS_DATE,OPEN_TIME,CLOSE_TIME,TRANSACT
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
 
-{% set source_columns = metadata_dict['source_columns'] %}
-{% set source_table = metadata_dict['source_table'] %}
-
-select {{ source_columns }} from {{ source_table }} 
+{{ PxDataset_macro(metadata_dict) }}
