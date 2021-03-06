@@ -38,12 +38,12 @@ with pivot_data as (
 select distinct {{group_column}}
 {% for _ in range(1, j) %}
     {% if loop.index == 1 %}
-    ,nth_value({{ pivot_column }}, {{loop.index}}) over (partition by {{ group_column }} order by {{ group_column }}) as {{pivot_column}}
+    ,nth_value({{ pivot_column }}, {{loop.index}}) over (partition by {{ group_column }} order by (select 1)) as {{pivot_column}}
     {% endif %} 
 
     {% if loop.index != 1 %}
     {% set i= loop.index - 1 %}
-    ,nth_value({{ pivot_column }}, {{loop.index}}) over (partition by {{ group_column }} order by {{ group_column }}) as {{pivot_column~'_'~i}}
+    ,nth_value({{ pivot_column }}, {{loop.index}}) over (partition by {{ group_column }} order by (select 1)) as {{pivot_column~'_'~i}}
     {% endif %} 
 
 {% endfor %}

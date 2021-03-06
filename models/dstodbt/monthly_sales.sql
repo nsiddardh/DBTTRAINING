@@ -1,4 +1,4 @@
 {{ config(materialized='view') }}
 
 SELECT *
-FROM montly_sales
+FROM monthly_emp_sales
