@@ -1,0 +1,171 @@
+DSType;DSStageType; InfaTransformationType
+SeqFileStage;CSeqFileStage;Source Qualifier
+CustomStage;PxFTP;Source Qualifier
+CustomStage;ftp;Source Qualifier
+CustomStage;ftpPX;Source Qualifier
+CustomStage;PxSequentialFile;Source Qualifier
+JSJobActivity;CJobActivity;Source Qualifier
+JSJobActivity;CExecCommandActivity;Source Qualifier
+JSJobActivity;CNotificationActivity;Source Qualifier
+JSJobActivity;CRoutineActivity;Source Qualifier
+CustomStage;PxDataSet;Source Qualifier
+JSSequencer;CSequencer;Source Qualifier
+JSExceptionHandler;CExceptionHandler;Source Qualifier
+JSCondition;CCondition;Source Qualifier
+JSTerminatorActivity;CTerminatorActivity;Source Qualifier
+ContainerStage;Container;Source Qualifier
+ContainerStage;scntnrPCWD7812;Source Qualifier
+ContainerStage1;Container;Expression
+TransformerStage;PxFilter;Expression
+CustomStage;Container;Source Qualifier
+CustomStage;SPCallStage;Source Qualifier
+CustomStage;AddBusDaysToDate;Source Qualifier
+CustomStage;HLPDateRecOp;Source Qualifier
+CustomStage;LookUpSyntheticKey;Source Qualifier
+CustomStage;CatalogSPCallStage;Source Qualifier
+CustomStage;CurrTimeStampActual;Source Qualifier
+CustomStage;CurrTimeStamp;Source Qualifier
+CustomStage;Link;Expression
+CustomStage;DateCloseOp;Source Qualifier
+CustomStage;DateCloseOpExt;Source Qualifier
+CustomStage;ID_PALETTESHAREDCONTAINER;;Source Qualifier
+TransformerStage;PxLookup;Expression
+TransformerStage;PxRemDup;Expression
+TransformerStage;PxSort;Expression
+CustomStage;PxSybase;Source Qualifier
+TransformerStage;SeqNbrGen;Expression
+CustomStage;PxDB2;Source Qualifier
+TransformerStage;PxFunnel;Expression
+TransformerStage;PxChangeCapture;Expression
+TransformerStage;PxJoin;Expression
+TransformerStage;CTransformerStage;Expression
+CustomStage;DRS;Source Qualifier
+CustomStage;CHashedFileStage;Source Qualifier
+CustomStage;CCollector;Expression
+
+CustomStage;DSDB2PX;Source Qualifier
+CustomStage;DSDB2;Source Qualifier
+CustomStage;DstxMapPX;Source Qualifier
+CustomStage;INFBLK10PX;Source Qualifier
+CustomStage;IQBulk12PX;Source Qualifier
+CustomStage;InfmxCLIPX;Source Qualifier
+CustomStage;ORAOCIBLPX;Source Qualifier
+
+CustomStage;ORAOCI9;Source Qualifier
+
+CustomStage;ORABULK;Source Qualifier
+
+CustomStage;DB2ConnectorPX;Source Qualifier
+
+CustomStage;ODBCConnectorPX;Source Qualifier
+
+CustomStage;TeradataConnectorPX;Source Qualifier
+
+CustomStage;NetezzaConnectorPX;Source Qualifier
+
+CustomStage;OracleConnectorPX;Source Qualifier
+TransformerStage;PivotPX;Expression
+TransformerStage;PxAggregator;Expression
+TransformerStage;AGGREGATOR;Expression
+CustomStage;PxCFF;Expression
+TransformerStage;PxChangeApply;Expression
+
+CustomStage;PxColumnExport;Expression
+TransformerStage;PxColumnGenerator;Expression
+TransformerStage;PxColumnImport;Expression
+TransformerStage;PxCombineRecords;Expression
+CustomStage;PxCompare;Source Qualifier
+CustomStage;PxCompress;Source Qualifier
+TransformerStage;PxCopy;Expression
+TransformerStage;PxMerge;Expression
+CustomStage;PxDecode;Expression
+CustomStage;PxDifference;Expression
+CustomStage;PxEncode;Expression
+CustomStage;PxExpand;Expression
+CustomStage;PxExternalFilter;Expression
+CustomStage;PxExternalSource;Source Qualifier
+CustomStage;PxExternalTarget;Source Qualifier
+
+CustomStage;PxFileSet;Source Qualifier
+
+CustomStage;PxGeneric;Expression
+CustomStage;PxHead;Source Qualifier
+CustomStage;PxInformixXPS;Source Qualifier
+
+CustomStage;PxLookupFileSet;Source Qualifier
+CustomStage;PxMakeSubRec;Expression
+CustomStage;PxMakeVect;Expression
+
+TransformerStage;PxModify;Expression
+CustomStage;PxNetezza;Source Qualifier
+CustomStage;PxOdbc;Source Qualifier
+CustomStage;PxOracle;Source Qualifier
+CustomStage;MSOLEDB;Source Qualifier
+CustomStage;SQLBLK7;Source Qualifier
+ODBCStage;CODBCStage;Source Qualifier
+CustomStage;NetezzaConnector;Source Qualifier
+CustomStage;ODBCConnector;Source Qualifier
+CustomStage;rdbload;Source Qualifier
+CustomStage;SYBASEOC;Source Qualifier
+UDT6Stage;CUDT6Stage;Expression
+CustomStage;TeradataConnector;Source Qualifier
+CustomStage;OracleConnector;Source Qualifier
+CustomStage;DB2Connector;Source Qualifier
+CustomStage;STP;Expression
+CustomStage;CFF;Source Qualifier
+CustomStage;Folder;Source Qualifier
+CustomStage;Command;Expression
+CustomStage;CInterProcess;Expression
+CustomStage;CPartitioner;Expression
+CustomStage;MERGE;Expression
+CustomStage;Pivot;Expression
+CustomStage;RowMerger;Expression
+CustomStage;RowSplitter;Expression
+CustomStage;sort;Expression
+CustomStage;RTIInput;Expression
+CustomStage;RTIOutput;Expression
+CustomStage;WSClient;Expression
+CustomStage;UDBLoad;Expression
+CustomStage;WSTransformer;Expression
+CustomStage;WebSphereMQConnector;Expression
+TransformerStage;XMLStage;Expression
+CustomStage;XMLInput;Source Qualifier
+CustomStage;XMLOutput;Source Qualifier
+TransformerStage;XMLTransformer;Expression
+CustomStage;DRSConnector;Source Qualifier
+CustomStage;InfmxCLI;Source Qualifier
+CustomStage;INFBLK10;Source Qualifier
+CustomStage;XPSLoad;Source Qualifier
+
+
+
+CustomStage;PxPivot;Expression
+CustomStage;PxPeek;Source Qualifier
+CustomStage;PxPromoteSubRec;Expression
+
+CustomStage;PxRowGenerator;Source Qualifier
+TransformerStage;PxSVTransformer;Expression
+CustomStage;PxSample;Expression
+
+CustomStage;PxSplitSubRec;Expression
+CustomStage;PxSplitVect;Expression
+
+CustomStage;Pxsqlsvr;Source Qualifier
+CustomStage;PxSurrogateKeyGenerator;Expression
+CustomStage;PxSwitch;Router
+
+CustomStage;PxTail;Expression
+CustomStage;PxTeradata;Source Qualifier
+CustomStage;PxWriteRangeMap;Expression
+CustomStage;STPPX;Expression
+CustomStage;SYBASEOCPX;Source Qualifier
+CustomStage;TDMLoadPX;Source Qualifier
+CustomStage;TerabulkPX;Source Qualifier
+CustomStage;TeradataPX;Source Qualifier
+CustomStage;UDBLoadPX;Expression
+CustomStage;XMLInputPX;Expression
+CustomStage;XMLOutputPX;Expression
+CustomStage;XMLTransformerPX;Expression
+CustomStage;XPSLoadPX;Expression
+CustomStage;ftpPX;Expression
+CustomStage;rdbloadPX;Expression
