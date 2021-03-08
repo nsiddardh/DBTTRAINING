@@ -5,7 +5,7 @@
 
 source_model: "lkp_trans_dt"
 lkp_models: ["odbc_time_day_part"]
-lkp_conidtions: [" lkp_trans_dt.TRANSACTION_TIME_LKP BETWEEN odbc_time_day_part.DAYPART_BGN_TM AND odbc_time_day_part.DAYPART_END_TM"]
+lkp_conditions: [" lkp_trans_dt.TRANSACTION_TIME_LKP BETWEEN odbc_time_day_part.DAYPART_BGN_TM AND odbc_time_day_part.DAYPART_END_TM"]
 derived_columns:
     DW_BUSI_DAY: "lkp_trans_dt.DW_BUSI_DAY"
     DW_TRANS_DAY: "lkp_trans_dt.DW_TRANS_DAY"
