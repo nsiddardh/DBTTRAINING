@@ -1,29 +1,30 @@
 {%- macro PxLookup_macro(metadata_dict=none) -%}
 
-{% set source_model = metadata_dict['source_model'] %}
+{% set source_model = metadata_dict['lkp_models'][0] %}
 
 {% set derived_columns = metadata_dict['derived_columns'] %}
 {% set lkp_models = metadata_dict['lkp_models'] %}
-{% set lkp_conidtions = metadata_dict['lkp_conidtions'] %}
-
+{% set lkp_conditions = metadata_dict['lkp_conditions'] %}
 
 
 
 select {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
-from {{ source_model }} as {{ source_model }} left outer join 
+from {{ source_model }} as {{ source_model }}  ,
 
 {% for lookup_model in lkp_models %}
  {% set i = loop.index %}
- {{ lkp_models[i-1] }} as {{ lkp_models[i-1] }}
+  {% if i == lkp_conditions|length %}
+     {{ lkp_models[i] }} as {{ lkp_models[i] }}
+ {%- endif -%}
 {% endfor %}
 
-on 
-{% for lkp_conidtion in lkp_conidtions %}
+where 
+{% for lkp_condition in lkp_conditions %}
     {% set j = loop.index %}
-    {% if j == lkp_conidtions|length %}
-    {{ lkp_conidtions[j-1] }}  
+    {% if j == lkp_conditions|length %}
+    {{ lkp_conditions[j-1] }}  
     {%- else -%} 
-    {{ lkp_conidtions[j-1] }}  and 
+    {{ lkp_conditions[j-1] }}  and 
     {%- endif -%}
 {% endfor %}
                   

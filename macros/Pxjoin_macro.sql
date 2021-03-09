@@ -4,9 +4,9 @@
 
 {% set derived_columns = metadata_dict['derived_columns'] %}
 {% set lkp_models = metadata_dict['lkp_models'] %}
-{% set lkp_conidtions = metadata_dict['lkp_conidtions'] %}
+{% set lkp_conditions = metadata_dict['lkp_conditions'] %}
 {% set join_type = metadata_dict['join_type'] %}
-{% set join_conidtions = metadata_dict['join_conidtions'] %}
+{% set join_conditions = metadata_dict['join_conditions'] %}
 
 
 
@@ -16,7 +16,7 @@ from {{ source_model }} as {{ source_model }}
 
 {% for lookup_model in lkp_models %}
  {% set i = loop.index %}
-{{ join_type[i-1] }}   {{ lkp_models[i-1] }} as {{ lkp_models[i-1] }} on {{ join_conidtions[i-1] }}
+{{ join_type[i-1] }}   {{ lkp_models[i-1] }} as {{ lkp_models[i-1] }} on {{ join_conditions[i-1] }}
 {% endfor %}
   
 
