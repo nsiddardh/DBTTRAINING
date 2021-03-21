@@ -1,4 +1,4 @@
-{%- macro CTransformerStage_macro(metadata_dict=none) -%}
+{%- macro Has_Input_macro(metadata_dict=none) -%}
 
 {% set source_model = metadata_dict['source_model'] %}
 

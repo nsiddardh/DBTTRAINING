@@ -40,4 +40,4 @@ derived_columns:
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
 
-{{ CTrasaformerStage_macro(metadata_dict) }}
+{{ CTransformerStage_macro(metadata_dict) }}

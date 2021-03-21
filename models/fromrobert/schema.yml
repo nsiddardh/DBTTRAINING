@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: USAA
+    description: 'showstopper'
+    schema: DBT_SNAMBURI
+    tables: 
+          - name: time_day_dim
+          - name: TIME_DAYPART_DET
+          - name: SRC_SEQ_HME_DETAIL
+          - name: monthly_emp_sales
+          - name: genrows
+            columns:
+                - name: SAME_NAME
+                  description: "The primary key for this table"
+                - name: ORIG_NAME
+                  description: "The primary key for this table"
+
