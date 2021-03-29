@@ -3,7 +3,7 @@
 {%- set yaml_metadata -%}
 
 source_table: "jn_srcs_Lnk_src_appl"
-source_columns: "APP_PKG_ID,USAA_PARTY_PD_ID"
+source_columns: "APP_PKG_ID,PARTY_PD_ID"
         
 {% endset %}
 
