@@ -8,13 +8,12 @@
 {%- set group_column = metadata_dict['group_column'] -%}
 {%- set array_index = metadata_dict['array_index'] -%}
 
-
+{%- set j = array_index + 1 -%}
 
 with pivot_data as (
 select distinct {{group_column}}
 {%- for pvtcol in pivot_column -%}
-    {%- set indx = loop.index -%}
-    {%- set j = array_index[indx-1]| int + 1-%}
+       
     {%- for _ in range(1, j) -%}
         {%- if loop.index == 1 -%}
         ,nth_value({{ pvtcol }}, {{loop.index}}) over (partition by {{ group_column }} order by (select 1)) as {{pvtcol}}

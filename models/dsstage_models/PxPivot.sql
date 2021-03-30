@@ -7,7 +7,7 @@ pivot_type: "Vertical"
 group_column: "empid"
 agg_column: "amount"
 pivot_column: ["month","month"]
-array_index: ["3","4"]
+array_index: 4
 
 derived_columns:
     emp_id: 'empid'
