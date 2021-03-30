@@ -7,9 +7,6 @@
 {% set pivot_column = metadata_dict['pivot_column'] %}
 {% set group_column = metadata_dict['group_column'] %}
 
-{%- call statement('my_statement', fetch_result=True) -%}
-      SELECT distinct month FROM {{ source_model }}
-{%- endcall -%}
 
 {%- set my_var = remove_braces(remove_brackets(load_result('my_statement')['data'])  ) -%}
 {% set i=0 %}
