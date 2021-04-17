@@ -1,0 +1,4 @@
+
+
+SELECT * 
+FROM TESTDBT.DBT_SNAMBURI.dup_remove_hme_timer_detail as  DUP_REMOVE_HME_TIMER_DETAIL
