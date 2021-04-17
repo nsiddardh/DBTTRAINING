@@ -9,23 +9,19 @@
 
 
 select {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
-from {{ source_model }} as {{ source_model }}  ,
+from {{ source_model }} as {{ source_model }}  
 
-{% for lookup_model in lkp_models %}
+{% for lkpcond in lkp_conditions %}
  {% set i = loop.index %}
+  {% if i < lkp_conditions|length %}
+     left outer join {{ lkp_models[i] }} as {{ lkp_models[i] }} on 
+     {{ lkp_conditions[i-1] }}
+  {%- endif -%}
   {% if i == lkp_conditions|length %}
-     {{ lkp_models[i] }} as {{ lkp_models[i] }}
- {%- endif -%}
+     left outer join {{ lkp_models[i] }} as {{ lkp_models[i] }}
+     {{ lkp_conditions[i-1] }}
+  {%- endif -%}
 {% endfor %}
 
-where 
-{% for lkp_condition in lkp_conditions %}
-    {% set j = loop.index %}
-    {% if j == lkp_conditions|length %}
-    {{ lkp_conditions[j-1] }}  
-    {%- else -%} 
-    {{ lkp_conditions[j-1] }}  and 
-    {%- endif -%}
-{% endfor %}
                   
 {% endmacro %}
