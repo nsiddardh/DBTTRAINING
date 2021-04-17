@@ -4,11 +4,12 @@
 {%- set yaml_metadata -%}
 
 source_model: ""
-lkp_models: ["lkp_busi_dt","odbc_time_day_dim"]
-lkp_conditions: ["lkp_busi_dt.BUSINESS_DATE=odbc_time_day_dim.busidaydt"]
-partition_by_field: ["BUSIDAYDT"]
-lkp_field: ["DW_DAY,DW_FISCALPERIOD"]
+lkp_models: ["lkp_busi_dt","odbc_time_day_dim","ODBC_TIME_DAY_PART"]
+lkp_conditions: ["lkp_busi_dt.BUSINESS_DATE=odbc_time_day_dim.busidaydt","lkp_busi_dt.OPEN_TIME=ODBC_TIME_DAY_PART.MINITUTM"]
+partition_by_field: ["BUSIDAYDT","MINITUTM"]
+lkp_field: ["DW_DAY,DW_FISCALPERIOD","DW_MINITUE,DW_DAY"]
 derived_columns:
+    DW_MINITUE: "ODBC_TIME_DAY_PART.DW_MINITUE"
     DW_BUSI_DAY: "odbc_time_day_dim.DW_DAY"
     STORE_ID: "lkp_busi_dt.STORE_ID"
     DW_STOREID: "lkp_busi_dt.DW_STOREID"
