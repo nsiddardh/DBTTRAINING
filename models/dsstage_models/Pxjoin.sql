@@ -36,4 +36,4 @@ derived_columns:
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
 
-{{ Pxjoin_macro_old(metadata_dict) }}
+{{ Pxjoin_macro(metadata_dict) }}

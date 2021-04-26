@@ -4,12 +4,12 @@
 {%- set yaml_metadata -%}
 
 source_model: ""
-lkp_models: ["lkp_busi_dt","odbc_time_day_dim","ODBC_TIME_DAY_PART"]
-lkp_conditions: ["lkp_busi_dt.BUSINESS_DATE=odbc_time_day_dim.busidaydt","lkp_busi_dt.OPEN_TIME=ODBC_TIME_DAY_PART.MINITUTM"]
-partition_by_field: ["BUSIDAYDT","MINITUTM"]
-lkp_field: ["DW_DAY,DW_FISCALPERIOD","DW_MINITUE,DW_DAY"]
+lkp_models: ["lkp_busi_dt","odbc_time_day_dim","odbc_time_minute_det"]
+lkp_conditions: ["lkp_busi_dt.BUSINESS_DATE=odbc_time_day_dim.busidaydt","lkp_busi_dt.OPEN_TIME=odbc_time_minute_det.minutetm"]
+partition_by_field: ["BUSIDAYDT","minutetm"]
+lkp_field: ["DW_DAY,DW_FISCALPERIOD","DW_MINUTE,dw_hour"]
 derived_columns:
-    DW_MINITUE: "ODBC_TIME_DAY_PART.DW_MINITUE"
+    DW_MINUTE: "odbc_time_minute_det.DW_MINUTE"
     DW_BUSI_DAY: "odbc_time_day_dim.DW_DAY"
     STORE_ID: "lkp_busi_dt.STORE_ID"
     DW_STOREID: "lkp_busi_dt.DW_STOREID"
@@ -23,7 +23,7 @@ derived_columns:
     MENU_BOARD_DURATION: "lkp_busi_dt.MENU_BOARD_DURATION"
     QUEUE_DURATION: "lkp_busi_dt.QUEUE_DURATION"
     CASHIER_WINDOW_DURATION: "lkp_busi_dt.CASHIER_WINDOW_DURATION"
-    BOOTH_QUEUE_DURATION: "lkp_trans_dt.BOOTH_QUEUE_DURATION"
+    BOOTH_QUEUE_DURATION: "lkp_busi_dt.BOOTH_QUEUE_DURATION"
     SERVICE_WINDOW_DURATION: "lkp_busi_dt.SERVICE_WINDOW_DURATION"
     TOTAL_BOOTH_DURATION: "lkp_busi_dt.TOTAL_BOOTH_DURATION"
     WAITING_AREA_DURATION: "lkp_busi_dt.WAITING_AREA_DURATION"
