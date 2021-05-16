@@ -9,6 +9,7 @@
 
 
 
+
 with source_data as (
 SELECT  DISTINCT DW_STOREID AS DW_STOREID,
     DW_BUSI_DAY AS DW_BUSI_DAY,
@@ -37,3 +38,5 @@ FROM i_tbc_hme_timer_detail as XFM_HME
 )
 
 select * from source_data WHERE rn = 1
+
+

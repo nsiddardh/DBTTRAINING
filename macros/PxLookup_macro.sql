@@ -2,6 +2,7 @@
 
 {%- set source_model = metadata_dict['lkp_models'][0] -%}
 
+{%- set columns = metadata_dict['derived_columns'] -%}
 {%- set derived_columns = metadata_dict['derived_columns'] -%}
 {%- set lkp_models = metadata_dict['lkp_models'] %}
 {%- set lkp_conditions = metadata_dict['lkp_conditions'] -%}
@@ -9,6 +10,22 @@
 {%- set partition_by_field = metadata_dict['partition_by_field'] -%}
 
 
+
+
+{%- for dcolumn in columns -%}
+ {%- set s = loop.index -%}
+    {%- set fildnm = columns[dcolumn].split('.')[1]-%}
+     {% for k in range(lkp_field|length) -%}
+      {%- set lkpcols = lkp_field[k].split(',') -%}
+       {%- for lkpcol in lkpcols -%}
+         {%- if fildnm == lkpcol -%}
+          '{{dcolumn}}': '{{columns[dcolumn]}}'
+            {{columns}}[1]
+
+         {%- endif -%}
+      {%- endfor -%}
+   {%- endfor -%}
+{%- endfor -%}
 
 select {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
 from {{ source_model }} as {{ source_model }} 
