@@ -1,4 +1,13 @@
 version: 2
 
-var:
-    svBusiDt: 'TRIM(LANE_NUMBER)'
+sources:
+  - name: table_list
+    description: 'list of snowflake tables'
+    schema: DBT_SNAMBURI
+    tables: 
+          - name: time_day_dim
+          - name: emp
+          - name: emp1
+          - name: emp2
+          - name: emp_src
+          

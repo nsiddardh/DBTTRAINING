@@ -12,20 +12,7 @@
 
 
 
-{%- for dcolumn in columns -%}
- {%- set s = loop.index -%}
-    {%- set fildnm = columns[dcolumn].split('.')[1]-%}
-     {% for k in range(lkp_field|length) -%}
-      {%- set lkpcols = lkp_field[k].split(',') -%}
-       {%- for lkpcol in lkpcols -%}
-         {%- if fildnm == lkpcol -%}
-          '{{dcolumn}}': '{{columns[dcolumn]}}'
-            {{columns}}[1]
 
-         {%- endif -%}
-      {%- endfor -%}
-   {%- endfor -%}
-{%- endfor -%}
 
 select {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
 from {{ source_model }} as {{ source_model }} 
@@ -120,5 +107,5 @@ from {{ source_model }} as {{ source_model }}
   {%- endif -%}
 {% endfor %}
 
-                  
+
 {% endmacro %}
