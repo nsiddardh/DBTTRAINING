@@ -23,12 +23,15 @@ source_columns:
 {%- set column_method = metadata_dict['column_method'] -%}
 {%- set delimiter = metadata_dict['delimiter'] -%}
 
-{% set col_list = key_columns|join('||') %}
+{% set col_list = source_columns|join(' ''||,||'' ') %}
+
+
+{{source_columns}}
  
 SELECT 
 
+{{col_list}} as {{column_to_export}}
 
 FROM {{source_model}}
 
 
-{{col_list}}
