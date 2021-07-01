@@ -3,7 +3,6 @@
 
 {%- set yaml_metadata -%}
 source_model: "lkp_day_part"
-filter_conditions: " lkp_day_part.DW_STOREID is not null"
 derived_columns:
     DW_STOREID: 'DW_STOREID'
     DW_BUSI_DAY: 'DW_BUSI_DAY'
@@ -28,4 +27,4 @@ derived_columns:
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
 
-{{ PxSwitch_macro(metadata_dict) }}
+{{ PxPeek_macro(metadata_dict) }}

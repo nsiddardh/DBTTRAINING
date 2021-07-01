@@ -21,7 +21,7 @@ from {{ source_model }} as {{ source_model }}
  {%- set i = loop.index %}
   
   {%- if i <= lkp_conditions|length %}
-     left outer join (select * from (select row_number() over(partition by  {{partition_by_field[i-1] }}  order by {{partition_by_field[i-1] }} ) as rnk,  {{ partition_by_field[i-1] }} ,
+     left outer join (select * from (select row_number() over(partition by  {{partition_by_field[i-1] }}  order by {{partition_by_field[i-1] }} ) as rnk,  
      {%- set lkp_fields = lkp_field[i-1].split(',') %}
          {%- for lkp in lkp_fields -%}
             {%- set j = loop.index -%}
