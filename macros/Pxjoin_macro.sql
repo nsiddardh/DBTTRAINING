@@ -12,7 +12,7 @@ from {{ source_model }}
 
 {% for lookup_model in lkp_models %}
 {{join_type[loop.index-1]}} {{lookup_model}}  on 
-{{join_conditions[loop.index-1]}} 
+({{join_conditions[loop.index-1]}} )
 {% endfor %}
   
 

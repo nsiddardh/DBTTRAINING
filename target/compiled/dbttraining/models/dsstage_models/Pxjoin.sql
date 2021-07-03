@@ -36,10 +36,10 @@ from lkp_busi_dt
 
 
 left outer join odbc_time_day_dim  on 
- lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT  
+( lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT  )
 
 inner join odbc_time_day_part  on 
- lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_part.BUSIDAYDT  
+( lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_part.BUSIDAYDT  )
 
   
 
