@@ -45,5 +45,10 @@ from lkp_busi_dt
         ( lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_part.BUSIDAYDT  )
        
 
+    left outer join odbc_time_minute_det  on 
+       
+        ( lkp_busi_dt.TRANSACTION_DATE = odbc_time_minute_det.BUSIDAYDT  )
+       
+
   
 

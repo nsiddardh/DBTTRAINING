@@ -4,9 +4,9 @@
 {%- set yaml_metadata -%}
 
 source_model: "lkp_busi_dt"
-lkp_models: ["odbc_time_day_dim","odbc_time_day_part"]
-join_type: ["left outer join","inner join"]
-join_conditions: [" lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT , lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT", " lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_part.BUSIDAYDT "]
+lkp_models: ["odbc_time_day_dim","odbc_time_day_part","odbc_time_minute_det"]
+join_type: ["left outer join","inner join","left outer join"]
+join_conditions: [" lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT , lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT", " lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_part.BUSIDAYDT ", " lkp_busi_dt.TRANSACTION_DATE = odbc_time_minute_det.BUSIDAYDT "]
 derived_columns:
     DW_BUSI_DAY: "lkp_busi_dt.DW_BUSI_DAY"
     DW_TRANS_DAY: "odbc_time_day_dim.DW_DAY"
