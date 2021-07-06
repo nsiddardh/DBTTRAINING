@@ -10,11 +10,11 @@
 select {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
 from {{ source_model }}  
 
-{% for lookup_model in lkp_models %}1
+{% for lookup_model in lkp_models %}
     {{join_type[loop.index-1]}} {{lookup_model}}  on 
-        {% for join_condition in join_conditions %}
-        ({{ join_condition | replace(","," and ")}} )
-        {% endfor %}
+       
+        ({{ join_conditions[loop.index-1] | replace(","," and ")}} )
+       
 {% endfor %}
   
 

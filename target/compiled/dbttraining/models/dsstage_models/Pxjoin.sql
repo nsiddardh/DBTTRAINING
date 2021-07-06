@@ -34,20 +34,16 @@ select lkp_busi_dt.DW_BUSI_DAY AS DW_BUSI_DAY,
     lkp_busi_dt.TBC_LANE AS TBC_LANE 
 from lkp_busi_dt  
 
-1
+
     left outer join odbc_time_day_dim  on 
-        
+       
         ( lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT  and  lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT )
-        
-        ( lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_part.BUSIDAYDT  )
-        
-1
+       
+
     inner join odbc_time_day_part  on 
-        
-        ( lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT  and  lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_dim.BUSIDAYDT )
-        
+       
         ( lkp_busi_dt.TRANSACTION_DATE = odbc_time_day_part.BUSIDAYDT  )
-        
+       
 
   
 

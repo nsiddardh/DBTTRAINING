@@ -9,4 +9,4 @@ source_columns: "STORE_ID,DW_STOREID,BUSINESS_DATE,OPEN_TIME,CLOSE_TIME,TRANSACT
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}
 
-{{ PxExternalSource_macro(metadata_dict) }}
+{{ UnstructuredDataConnectorPX_macro(metadata_dict) }}
