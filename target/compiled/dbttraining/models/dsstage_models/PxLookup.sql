@@ -46,4 +46,4 @@ from lkp_trans_dt as lkp_trans_dt
      left outer join odbc_time_day_dim as odbc_time_day_dim
      lkp_trans_dt.BUSINESS_DATE=odbc_time_day_dim.busidaydt
 
-                  
+

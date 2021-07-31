@@ -28,12 +28,12 @@ select odbc_time_minute_det.DW_MINUTE AS DW_MINUTE,
 from lkp_busi_dt as lkp_busi_dt 
 
 
-     left outer join (select * from (select row_number() over(partition by  BUSIDAYDT  order by BUSIDAYDT ) as rnk,  BUSIDAYDT ,DW_DAY,
+     left outer join (select * from (select row_number() over(partition by  BUSIDAYDT  order by BUSIDAYDT ) as rnk,DW_DAY,
                DW_FISCALPERIOD
      from odbc_time_day_dim)
       where rnk=1)  odbc_time_day_dim on 
      lkp_busi_dt.BUSINESS_DATE=odbc_time_day_dim.busidaydt
-     left outer join (select * from (select row_number() over(partition by  minutetm  order by minutetm ) as rnk,  minutetm ,DW_MINUTE,
+     left outer join (select * from (select row_number() over(partition by  minutetm  order by minutetm ) as rnk,DW_MINUTE,
                dw_hour
      from odbc_time_minute_det)
       where rnk=1)  odbc_time_minute_det on 
