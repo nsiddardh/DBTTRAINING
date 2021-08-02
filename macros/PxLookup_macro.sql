@@ -10,10 +10,6 @@
 {%- set partition_by_field = metadata_dict['partition_by_field'] -%}
 
 
-
-
-
-
 select {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
 from {{ source_model }} as {{ source_model }} 
 
@@ -22,16 +18,8 @@ from {{ source_model }} as {{ source_model }}
   
   {%- if i <= lkp_conditions|length %}
      left outer join (select * from (select row_number() over(partition by  {{partition_by_field[i-1] }}  order by {{partition_by_field[i-1] }} ) as rnk,  
-     {%- set lkp_fields = lkp_field[i-1].split(',') %}
-         {%- for lkp in lkp_fields -%}
-            {%- set j = loop.index -%}
-            {%- if j < lkp_fields|length -%}
-               {{lkp_fields[j-1]}},
-            {%- else %}
-               {{lkp_fields[j-1]}}
-            {%- endif -%}
-         {%- endfor %}
-     from {{ lkp_models[i] }})
+         *
+      from {{ lkp_models[i] }})
       where rnk=1)  {{ lkp_models[i] }} on 
      {{ lkp_conditions[i-1] }}
   {%- endif -%}
@@ -42,6 +30,19 @@ from {{ source_model }} as {{ source_model }}
 
                   
 {% endmacro %}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {%- macro PxLookup_macro_first(metadata_dict=none) -%}
 

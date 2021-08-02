@@ -30,11 +30,11 @@ from lkp_busi_dt as lkp_busi_dt
 
      left outer join (select * from (select row_number() over(partition by  BUSIDAYDT  order by BUSIDAYDT ) as rnk,DW_DAY,
                DW_FISCALPERIOD
-     from odbc_time_day_dim)
+      from odbc_time_day_dim)
       where rnk=1)  odbc_time_day_dim on 
      lkp_busi_dt.BUSINESS_DATE=odbc_time_day_dim.busidaydt
      left outer join (select * from (select row_number() over(partition by  minutetm  order by minutetm ) as rnk,DW_MINUTE,
                dw_hour
-     from odbc_time_minute_det)
+      from odbc_time_minute_det)
       where rnk=1)  odbc_time_minute_det on 
      lkp_busi_dt.OPEN_TIME=odbc_time_minute_det.minutetm
