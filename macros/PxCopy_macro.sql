@@ -6,15 +6,7 @@
 
 {% set hashed_columns = metadata_dict['hashed_columns'] %}
 
-WITH staging AS (
-{{ dbtvault.stage(include_source_columns=false,
-                  source_model=source_model,
-                  derived_columns=derived_columns,
-                  hashed_columns=none,
-                  ranked_columns=none) }}
-)
-
-SELECT *
-FROM staging
+SELECT {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
+FROM {{ source_model }}
 
 {% endmacro %}
