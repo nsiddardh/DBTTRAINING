@@ -8,6 +8,8 @@
 
 SELECT {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }} 
 FROM {{ source_model }}
-where {{ filter_conditions }}
+{% if filter_conditions != ""  %}
+ where {{ filter_conditions }}
+ {% endif %}
 
 {% endmacro %}

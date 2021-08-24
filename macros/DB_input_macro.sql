@@ -7,7 +7,7 @@
 
 
 
-    {%- if source_query_override is not none -%}
+    {%- if source_query_override == null -%}
 
        select {{ source_columns }} from {{ source_table }} 
 
