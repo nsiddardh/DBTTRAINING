@@ -12,6 +12,7 @@ sources:
           - name: time_minute_dim
           - name: emp
           - name: emp1
+          - name: emp2
 
   - name: tpch_sample
     database: SNOWFLAKE_SAMPLE_DATA

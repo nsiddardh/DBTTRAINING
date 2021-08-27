@@ -3,16 +3,16 @@
 
 {%- set yaml_metadata -%}
 
-source_models: ["emp_src","emp1_src","emp2"]
-col_list1:
-    emp_id: "emp.empid"
-    emp_name: "emp.empname"
-col_list2:
-    emp_id: "emp1.empid"
-    emp_name: "emp1.empname"
-col_list3:
-    emp_id: "emp2.empid"
-    emp_name: "emp2.empname"
+source_model: "emp_src"
+merge_models: ["emp1_src","emp2_src"]
+unmatched_master_mode: "Keep"
+merge_keys: ["empid"]
+
+derived_columns:
+    emp_id: "emp_src.empid"
+    emp_name: "emp1_src.empname"
+    deptid: "emp2_src.deptid"
+
 
 
 {% endset %}
