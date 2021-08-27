@@ -3,7 +3,7 @@
 
 {%- set yaml_metadata -%}
 
-source_models: ["emp","emp1","emp2"]
+source_models: ["emp_src","emp1_src","emp2"]
 col_list1:
     emp_id: "emp.empid"
     emp_name: "emp.empname"

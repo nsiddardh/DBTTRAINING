@@ -10,6 +10,8 @@ sources:
           - name: SRC_SEQ_HME_DETAIL
           - name: monthly_emp_sales
           - name: time_minute_dim
+          - name: emp
+          - name: emp1
 
   - name: tpch_sample
     database: SNOWFLAKE_SAMPLE_DATA

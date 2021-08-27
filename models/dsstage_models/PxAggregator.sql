@@ -2,7 +2,7 @@
 
 
 {%- set yaml_metadata -%}
-source_model: "emp"
+source_model: "emp_src"
 group_by_columns: "deptid, empid"
 derived_columns:
     deptid: "deptid"

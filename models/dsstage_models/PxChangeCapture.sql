@@ -4,21 +4,24 @@
 
 {%- set yaml_metadata -%}
 
-source_model: "emp"
-change_model: "emp1"
-key_columns: ["empid","empname","dept"]
-source_columns: 
+before_model: "emp_src"
+after_model: "emp1_src"
+
+key_columns: ["empid"]
+change_columns: ["empname","deptid"]
+
+before_columns: 
     empid: 'empid'
     empname: 'empname'
-    deptid: 'dept'
-change_columns: 
+    deptid: 'deptid'
+after_columns: 
     empid: 'empid'
     empname: 'empname'
-    deptid: 'dept'
+    deptid: 'deptid'
 derived_columns:
     empid: 'empid'
     empname: 'empname'
-    deptid: 'dept'
+    deptid: 'deptid'
 
 {% endset %}
 

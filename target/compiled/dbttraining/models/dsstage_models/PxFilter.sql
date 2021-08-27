@@ -27,5 +27,7 @@ SELECT DW_STOREID AS DW_STOREID,
     LANE_NUMBER AS DRIVE_THRU_LANE_NBRLANE_NUMBER,
     TBC_LANE AS TBC_LANE 
 FROM lkp_day_part
-where  lkp_day_part.DW_STOREID is not null
+
+ where  lkp_day_part.DW_STOREID is not null
+ 
 
