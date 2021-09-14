@@ -32,11 +32,11 @@ FROM   {{after_model}} where    {{key_col_list}} not  in     (
 UNION ALL
 
 SELECT {{ create_alias(source_model=after_model,  derived_columns=derived_columns) }} , 2 AS CHNAGE_CODE
-FROM   {{before_model}} where    {{key_col_list}} not  in     (
-                        select {{key_col_list}}
-                            from {{ after_model }} as {{ after_model }} 
-                        
-                    )
+FROM    (select {{key_col_list}} as key_col_list,* from {{before_model}}){{before_model}}
+left outer join 
+        (select {{key_col_list}} as key_col_list,* from {{after_model}}){{after_model}}
+on   {{before_model}}.key_col_list = {{ after_model }}.key_col_list
+where {{ after_model }}.key_col_list is null
 
 UNION ALL
 

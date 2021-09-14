@@ -5,7 +5,7 @@
 
 source_model: "emp_src"
 merge_models: ["emp1_src","emp2_src"]
-unmatched_master_mode: "Keep"
+unmatched_master_mode: "keep"
 merge_keys: ["empid"]
 
 derived_columns:

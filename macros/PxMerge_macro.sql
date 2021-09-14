@@ -13,7 +13,7 @@
 SELECT {{ create_alias(source_model=source_model,  derived_columns=derived_columns) }}
 FROM (select *, MD5({{merge_keys_list}}) as src_key_list from {{ source_model }} ) {{ source_model }}
 
-{%- if unmatched_master_mode == "Keep" %}
+{%- if unmatched_master_mode == "keep" %}
     {%- for merge_model in merge_models %}
       {%- set i = loop.index %}
         left outer join 
